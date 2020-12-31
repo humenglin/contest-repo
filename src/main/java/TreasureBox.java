@@ -1,6 +1,3 @@
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
  * 宝箱
  * @author humenglin
@@ -8,8 +5,6 @@ import java.util.Date;
 public class TreasureBox {
     /** 宝箱编号 */
     private int boxId;
-    /** 开启时间 */
-    private Date openedTime;
     /** 上一个宝箱的Hash值 */
     private String lastHashValue;
     /** Hash值 */
@@ -17,9 +12,8 @@ public class TreasureBox {
     /** 神秘数字 */
     private int mysteriousNo;
 
-    public TreasureBox(int boxId, Date openedTime, String lastHashValue, int mysteriousNo) {
+    public TreasureBox(int boxId, String lastHashValue, int mysteriousNo) {
         this.boxId = boxId;
-        this.openedTime = openedTime;
         this.lastHashValue = lastHashValue;
         this.mysteriousNo = mysteriousNo;
         this.myHashValue = calculateHashValue();
@@ -37,7 +31,6 @@ public class TreasureBox {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder(this.boxId)
-                .append(new SimpleDateFormat("yyyyMMddHHmmss").format(this.openedTime))
                 .append(this.lastHashValue)
                 .append(this.mysteriousNo);
         return stringBuilder.toString();
