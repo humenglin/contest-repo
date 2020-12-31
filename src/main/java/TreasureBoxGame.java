@@ -1,3 +1,5 @@
+import exception.BoxNumIsOutOfBoundaryException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,11 @@ public class TreasureBoxGame {
      * @param mysteriousNo
      * @return
      */
-    public boolean play(int boxId, int mysteriousNo) {
+    public boolean play(int boxId, int mysteriousNo) throws BoxNumIsOutOfBoundaryException {
+        if (boxId > 10) {
+            throw new BoxNumIsOutOfBoundaryException();
+        }
+
         TreasureBox nowTreasureBox = treasureBoxes.get(boxId - 1);
         boolean nowTreasureBoxStatus = nowTreasureBox.play(mysteriousNo);
         if (nowTreasureBoxStatus && boxId < BOX_MAX_NUMS) {

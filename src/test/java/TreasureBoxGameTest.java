@@ -1,3 +1,4 @@
+import exception.BoxNumIsOutOfBoundaryException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertFalse;
@@ -5,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 public class TreasureBoxGameTest {
     @Test
-    public void should_return_false_when_open_first_box_given_a_init_treasure_box_game_and_a_wrong_mysterious_no() {
+    public void should_return_false_when_open_first_box_given_a_init_treasure_box_game_and_a_wrong_mysterious_no() throws BoxNumIsOutOfBoundaryException {
         TreasureBoxGame treasureBoxGame = new TreasureBoxGame();
 
         boolean actualStatus = treasureBoxGame.play(1, 38);
@@ -13,8 +14,15 @@ public class TreasureBoxGameTest {
         assertFalse(actualStatus);
     }
 
+    @Test(expected = BoxNumIsOutOfBoundaryException.class)
+    public void should_throw_exception_given_11_box() throws BoxNumIsOutOfBoundaryException {
+        TreasureBoxGame treasureBoxGame = new TreasureBoxGame();
+
+        treasureBoxGame.play(11, 38);
+    }
+
     @Test
-    public void should_return_true_when_open_first_box_given_a_init_treasure_box_game_and_a_right_mysterious_no() {
+    public void should_return_true_when_open_first_box_given_a_init_treasure_box_game_and_a_right_mysterious_no() throws BoxNumIsOutOfBoundaryException {
         TreasureBoxGame treasureBoxGame = new TreasureBoxGame();
 
         boolean actualStatus = treasureBoxGame.play(1, 610536);
@@ -25,7 +33,7 @@ public class TreasureBoxGameTest {
     }
 
     @Test
-    public void should_return_game_status_is_open_when_game_is_over_given_10_right_mysterious_no() {
+    public void should_return_game_status_is_open_when_game_is_over_given_10_right_mysterious_no() throws BoxNumIsOutOfBoundaryException {
         TreasureBoxGame treasureBoxGame = new TreasureBoxGame();
 
         treasureBoxGame.play(1, 610536);
@@ -44,7 +52,7 @@ public class TreasureBoxGameTest {
     }
 
     @Test
-    public void should_return_game_status_is_close_when_game_is_over_given_5_right_mysterious_no_and_6th_is_wrong() {
+    public void should_return_game_status_is_close_when_game_is_over_given_5_right_mysterious_no_and_6th_is_wrong() throws BoxNumIsOutOfBoundaryException {
         TreasureBoxGame treasureBoxGame = new TreasureBoxGame();
 
         treasureBoxGame.play(1, 610536);
