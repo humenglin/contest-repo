@@ -20,6 +20,10 @@ public class TreasureBox {
         this.boxOpenFlag = false;
     }
 
+    public String getMyHashValue() {
+        return myHashValue;
+    }
+
     /**
      * 计算宝箱的hash值
      * @return

@@ -6,6 +6,7 @@ import java.util.List;
  * @author humenglin
  */
 public class TreasureBoxGame {
+    private boolean gameStatus = false;
     private List<TreasureBox> treasureBoxes = new ArrayList<TreasureBox>(10);
 
     public TreasureBoxGame() {
@@ -13,8 +14,27 @@ public class TreasureBoxGame {
         this.treasureBoxes.add(treasureBox);
     }
 
+    /**
+     * 宝箱游戏玩法
+     * @param boxId
+     * @param mysteriousNo
+     * @return
+     */
     public boolean play(int boxId, int mysteriousNo) {
         TreasureBox nowTreasureBox = treasureBoxes.get(boxId - 1);
-        return nowTreasureBox.play(mysteriousNo);
+        boolean nowTreasureBoxStatus = nowTreasureBox.play(mysteriousNo);
+        if (nowTreasureBoxStatus && boxId < 10) {
+            TreasureBox nextTreasureBox = new TreasureBox(boxId + 1, nowTreasureBox.getMyHashValue());
+            treasureBoxes.add(nextTreasureBox);
+        }
+        if (nowTreasureBoxStatus && boxId == 10) {
+            gameStatus = false;
+        }
+        return nowTreasureBoxStatus;
+    }
+
+
+    public boolean getFinalStatus() {
+        return this.gameStatus;
     }
 }
