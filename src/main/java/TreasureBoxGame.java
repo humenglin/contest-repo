@@ -1,4 +1,5 @@
 import exception.BoxNumIsOutOfBoundaryException;
+import exception.ThisBoxCannotPlayException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,9 +30,14 @@ public class TreasureBoxGame {
      * @param mysteriousNo
      * @return
      */
-    public boolean play(int boxId, int mysteriousNo) throws BoxNumIsOutOfBoundaryException {
+    public boolean play(int boxId, int mysteriousNo) throws BoxNumIsOutOfBoundaryException, ThisBoxCannotPlayException {
         if (boxId > 10) {
             throw new BoxNumIsOutOfBoundaryException();
+        }
+
+        if (treasureBoxes.size() < boxId) {
+            // 只有当上一个宝箱开启后才初始化下一个宝箱，因此当play的这个宝箱编号大于游戏中的宝箱个数时，说明此前有宝箱未开启
+            throw new ThisBoxCannotPlayException();
         }
 
         TreasureBox nowTreasureBox = treasureBoxes.get(boxId - 1);
