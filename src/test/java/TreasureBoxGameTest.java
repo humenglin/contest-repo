@@ -42,4 +42,19 @@ public class TreasureBoxGameTest {
 
         assertTrue(gameStatus);
     }
+
+    @Test
+    public void should_return_game_status_is_close_when_game_is_over_given_5_right_mysterious_no_and_6th_is_wrong() {
+        TreasureBoxGame treasureBoxGame = new TreasureBoxGame();
+
+        treasureBoxGame.play(1, 610536);
+        treasureBoxGame.play(2, 167626);
+        treasureBoxGame.play(3, 661789);
+        treasureBoxGame.play(4, 62753);
+        treasureBoxGame.play(5, 667142);
+        treasureBoxGame.play(6, 1);
+        boolean gameStatus = treasureBoxGame.getFinalStatus();
+
+        assertFalse(gameStatus);
+    }
 }
