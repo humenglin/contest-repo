@@ -98,4 +98,15 @@ public class TreasureBoxTest {
         String actualHashValue = treasureBox.calculateHashValue(mysteriousNo);
         assertEquals("00000770d000453c622ab7119c364a25e457fab114b6566a9e504b42d43fd966", actualHashValue);
     }
+
+    @Test
+    public void should_return_right_mysterious_no_and_hash_value_given_6th_box() {
+        TreasureBox treasureBox = new TreasureBox(6, "00000770d000453c622ab7119c364a25e457fab114b6566a9e504b42d43fd966");
+        int actualMysteriousNo = treasureBox.findRightMysteriousNo();
+        assertEquals(3621134, actualMysteriousNo);
+
+        int mysteriousNo = 3621134;
+        String actualHashValue = treasureBox.calculateHashValue(mysteriousNo);
+        assertEquals("00000bc0a1f0700bbedca0e22d9d7074e96bc416ce62e9647eea2ba214087c0c", actualHashValue);
+    }
 }
