@@ -16,12 +16,11 @@ public class TreasureBoxTest {
     }
 
     @Test
-    public void should_return_false_when_judge_status_given_a_wrong_mysterious_number() throws ParseException {
+    public void should_return_false_when_play_given_a_wrong_mysterious_number() throws ParseException {
         int mysteriousNo = 1;
         TreasureBox treasureBox = new TreasureBox(1, "0");
-        treasureBox.calculateHashValue(mysteriousNo);
 
-        boolean actualStatus = treasureBox.judgeStatus();
+        boolean actualStatus = treasureBox.play(mysteriousNo);
 
         assertFalse(actualStatus);
     }

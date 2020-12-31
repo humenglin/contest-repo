@@ -22,10 +22,9 @@ public class TreasureBox {
      * @return
      */
     public String calculateHashValue(int mysteriousNo) {
-        String treasureBoxStr = this.toString();
         this.mysteriousNo = mysteriousNo;
-        this.myHashValue = ShaUtils.getHashValueBySha256(treasureBoxStr);
-        return this.myHashValue;
+        String treasureBoxStr = this.toString();
+        return ShaUtils.getHashValueBySha256(treasureBoxStr);
     }
 
     @Override
@@ -39,8 +38,10 @@ public class TreasureBox {
     /**
      * 判断宝箱是否开启
      * @return
+     * @param mysteriousNo
      */
-    public boolean judgeStatus() {
+    public boolean play(int mysteriousNo) {
+        this.myHashValue = calculateHashValue(mysteriousNo);
         return "00000".equals(this.myHashValue.substring(0, 5));
     }
 }
