@@ -1,3 +1,5 @@
+import utils.ShaUtils;
+
 /**
  * 宝箱
  * @author humenglin

@@ -1,4 +1,5 @@
 import org.junit.Test;
+import utils.ShaUtils;
 
 import static org.junit.Assert.assertEquals;
 
