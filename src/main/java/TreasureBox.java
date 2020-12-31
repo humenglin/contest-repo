@@ -12,20 +12,20 @@ public class TreasureBox {
     /** 神秘数字 */
     private int mysteriousNo;
 
-    public TreasureBox(int boxId, String lastHashValue, int mysteriousNo) {
+    public TreasureBox(int boxId, String lastHashValue) {
         this.boxId = boxId;
         this.lastHashValue = lastHashValue;
-        this.mysteriousNo = mysteriousNo;
-        this.myHashValue = calculateHashValue();
     }
 
     /**
      * 计算宝箱的hash值
      * @return
      */
-    public String calculateHashValue() {
+    public String calculateHashValue(int mysteriousNo) {
         String treasureBoxStr = this.toString();
-        return ShaUtils.getHashValueBySha256(treasureBoxStr);
+        this.mysteriousNo = mysteriousNo;
+        this.myHashValue = ShaUtils.getHashValueBySha256(treasureBoxStr);
+        return this.myHashValue;
     }
 
     @Override
