@@ -11,10 +11,13 @@ public class TreasureBox {
     private String myHashValue;
     /** 神秘数字 */
     private int mysteriousNo;
+    /** 宝箱是否开启 */
+    private boolean boxOpenFlag;
 
     public TreasureBox(int boxId, String lastHashValue) {
         this.boxId = boxId;
         this.lastHashValue = lastHashValue;
+        this.boxOpenFlag = false;
     }
 
     /**
@@ -42,6 +45,22 @@ public class TreasureBox {
      */
     public boolean play(int mysteriousNo) {
         this.myHashValue = calculateHashValue(mysteriousNo);
-        return "00000".equals(this.myHashValue.substring(0, 5));
+        this.boxOpenFlag = "00000".equals(this.myHashValue.substring(0, 5));
+        return this.boxOpenFlag;
+    }
+
+    /**
+     * 查找真实的神秘数字
+     * @return
+     */
+    public int findRightMysteriousNo() {
+        int initMysteriousNo = 1;
+        while (!boxOpenFlag) {
+            boxOpenFlag = play(initMysteriousNo);
+            if (!boxOpenFlag) {
+                initMysteriousNo++;
+            }
+        }
+        return initMysteriousNo;
     }
 }

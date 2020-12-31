@@ -24,4 +24,23 @@ public class TreasureBoxTest {
 
         assertFalse(actualStatus);
     }
+
+    @Test
+    public void should_return_true_when_play_given_a_right_mysterious_number() throws ParseException {
+        int mysteriousNo = 610536;
+        TreasureBox treasureBox = new TreasureBox(1, "0");
+
+        boolean actualStatus = treasureBox.play(mysteriousNo);
+
+        assertTrue(actualStatus);
+    }
+
+    @Test
+    public void should_return_right_mysterious_no_when_find_right_mysterious_no() {
+        TreasureBox treasureBox = new TreasureBox(1, "0");
+
+        int actualMysteriousNo = treasureBox.findRightMysteriousNo();
+
+        assertEquals(610536, actualMysteriousNo);
+    }
 }
