@@ -47,7 +47,8 @@ public class TreasureBox {
      */
     @Override
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder(this.boxId)
+        StringBuilder stringBuilder = new StringBuilder()
+                .append(this.boxId)
                 .append(this.lastHashValue)
                 .append(this.mysteriousNo);
         return stringBuilder.toString();
