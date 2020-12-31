@@ -40,6 +40,6 @@ public class TreasureBoxGameTest {
         treasureBoxGame.play(10, 613080);
         boolean gameStatus = treasureBoxGame.getFinalStatus();
 
-        assertFalse(gameStatus);
+        assertTrue(gameStatus);
     }
 }

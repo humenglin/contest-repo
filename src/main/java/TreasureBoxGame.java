@@ -28,7 +28,7 @@ public class TreasureBoxGame {
             treasureBoxes.add(nextTreasureBox);
         }
         if (nowTreasureBoxStatus && boxId == 10) {
-            gameStatus = false;
+            gameStatus = true;
         }
         return nowTreasureBoxStatus;
     }
