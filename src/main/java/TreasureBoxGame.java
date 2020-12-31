@@ -1,3 +1,4 @@
+import constant.CHECKMSG;
 import exception.BoxNumIsOutOfBoundaryException;
 import exception.ThisBoxCannotPlayException;
 
@@ -9,18 +10,13 @@ import java.util.List;
  * @author humenglin
  */
 public class TreasureBoxGame {
-    // 宝箱个数
-    public static final int BOX_MAX_NUMS = 10;
-    // 第一个宝箱的上一个hash值
-    public static final String LAST_HASH_VALUE_OF_FIRST_BOX = "0";
-
     // 游戏状态
     private boolean gameStatus = false;
     // 游戏的宝箱列表
-    private List<TreasureBox> treasureBoxes = new ArrayList<TreasureBox>(BOX_MAX_NUMS);
+    private List<TreasureBox> treasureBoxes = new ArrayList<TreasureBox>(CHECKMSG.BOX_MAX_NUMS);
 
     public TreasureBoxGame() {
-        TreasureBox treasureBox = new TreasureBox(1, LAST_HASH_VALUE_OF_FIRST_BOX);
+        TreasureBox treasureBox = new TreasureBox(1, CHECKMSG.LAST_HASH_VALUE_OF_FIRST_BOX);
         this.treasureBoxes.add(treasureBox);
     }
 
@@ -42,11 +38,11 @@ public class TreasureBoxGame {
 
         TreasureBox nowTreasureBox = treasureBoxes.get(boxId - 1);
         boolean nowTreasureBoxStatus = nowTreasureBox.play(mysteriousNo);
-        if (nowTreasureBoxStatus && boxId < BOX_MAX_NUMS) {
+        if (nowTreasureBoxStatus && boxId < CHECKMSG.BOX_MAX_NUMS) {
             TreasureBox nextTreasureBox = new TreasureBox(boxId + 1, nowTreasureBox.getMyHashValue());
             treasureBoxes.add(nextTreasureBox);
         }
-        if (nowTreasureBoxStatus && boxId == BOX_MAX_NUMS) {
+        if (nowTreasureBoxStatus && boxId == CHECKMSG.BOX_MAX_NUMS) {
             gameStatus = true;
         }
         return nowTreasureBoxStatus;
