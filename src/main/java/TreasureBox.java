@@ -3,8 +3,11 @@
  * @author humenglin
  */
 public class TreasureBox {
+    // 正确hash值的前缀
     public static final String PREFIX_RIGHT_HASH_VALUE = "00000";
+    // 正确hash值的前缀位数
     public static final int PREFIX_NUM_OF_RIGHT_HASH_VALUE = 5;
+
     /** 宝箱编号 */
     private int boxId;
     /** 上一个宝箱的Hash值 */
@@ -22,6 +25,10 @@ public class TreasureBox {
         this.boxOpenFlag = false;
     }
 
+    /**
+     * 获取宝箱的hash值
+     * @return
+     */
     public String getMyHashValue() {
         return myHashValue;
     }
@@ -36,6 +43,10 @@ public class TreasureBox {
         return ShaUtils.getHashValueBySha256(treasureBoxStr);
     }
 
+    /**
+     * 按照hash值计算的字符串，重写宝箱的toString方法
+     * @return
+     */
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder(this.boxId)

@@ -6,9 +6,14 @@ import java.util.List;
  * @author humenglin
  */
 public class TreasureBoxGame {
+    // 宝箱个数
     public static final int BOX_MAX_NUMS = 10;
+    // 第一个宝箱的上一个hash值
     public static final String LAST_HASH_VALUE_OF_FIRST_BOX = "0";
+
+    // 游戏状态
     private boolean gameStatus = false;
+    // 游戏的宝箱列表
     private List<TreasureBox> treasureBoxes = new ArrayList<TreasureBox>(BOX_MAX_NUMS);
 
     public TreasureBoxGame() {
@@ -35,7 +40,10 @@ public class TreasureBoxGame {
         return nowTreasureBoxStatus;
     }
 
-
+    /**
+     * 获取游戏最终的状态
+     * @return
+     */
     public boolean getFinalStatus() {
         return this.gameStatus;
     }
