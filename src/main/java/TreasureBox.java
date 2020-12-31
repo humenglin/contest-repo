@@ -22,6 +22,7 @@ public class TreasureBox {
         this.openedTime = openedTime;
         this.lastHashValue = lastHashValue;
         this.mysteriousNo = mysteriousNo;
+        this.myHashValue = calculateHashValue();
     }
 
     /**
@@ -40,5 +41,13 @@ public class TreasureBox {
                 .append(this.lastHashValue)
                 .append(this.mysteriousNo);
         return stringBuilder.toString();
+    }
+
+    /**
+     * 判断宝箱是否开启
+     * @return
+     */
+    public boolean judgeStatus() {
+        return "00000".equals(this.myHashValue.substring(0, 5));
     }
 }
