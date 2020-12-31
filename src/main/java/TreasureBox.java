@@ -3,6 +3,7 @@
  * @author humenglin
  */
 public class TreasureBox {
+    public static final String PREFIX_RIGHT_HASH_VALUE = "00000";
     /** 宝箱编号 */
     private int boxId;
     /** 上一个宝箱的Hash值 */
@@ -49,7 +50,7 @@ public class TreasureBox {
      */
     public boolean play(int mysteriousNo) {
         this.myHashValue = calculateHashValue(mysteriousNo);
-        this.boxOpenFlag = "00000".equals(this.myHashValue.substring(0, 5));
+        this.boxOpenFlag = PREFIX_RIGHT_HASH_VALUE.equals(this.myHashValue.substring(0, 5));
         return this.boxOpenFlag;
     }
 
