@@ -7,11 +7,12 @@ import java.util.List;
  */
 public class TreasureBoxGame {
     public static final int BOX_MAX_NUMS = 10;
+    public static final String LAST_HASH_VALUE_OF_FIRST_BOX = "0";
     private boolean gameStatus = false;
     private List<TreasureBox> treasureBoxes = new ArrayList<TreasureBox>(BOX_MAX_NUMS);
 
     public TreasureBoxGame() {
-        TreasureBox treasureBox = new TreasureBox(1, "0");
+        TreasureBox treasureBox = new TreasureBox(1, LAST_HASH_VALUE_OF_FIRST_BOX);
         this.treasureBoxes.add(treasureBox);
     }
 
